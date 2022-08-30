@@ -3,16 +3,14 @@ import cors from "cors";
 
 import appConfig from "./config/application.config";
 import database from "./config/initializers/db.init";
-
-import eventRoutes from "./config/routes/event.routes";
+import useRoutes from "./config/routes";
 
 const app = express();
 
 // global middleware
 app.use(cors());
 
-// Routers
-app.use("/events", eventRoutes(express.Router()));
+useRoutes(app);
 
 database.initialize().then(() => {
   app.listen(appConfig.port, () => {});

@@ -9,7 +9,7 @@ import {
   destroy,
 } from "../../controllers/events.controller";
 
-const eventRoutes = (router: Router) => {
+const eventRoutes = (router: Router): Router => {
   router.use(jsonResponse);
 
   router.post("/", create);
