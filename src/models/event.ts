@@ -1,6 +1,8 @@
 import { Schema, model } from "mongoose";
 
-interface IEvent {
+// https://mongoosejs.com/docs/typescript.html
+
+export interface IEvent {
   name: string;
   type: string;
   user_id: number;
