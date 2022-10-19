@@ -6,6 +6,7 @@ import authConfig from "../auth.config";
 import eventRoutes from "./event.routes";
 import userRoutes from "./user.routes";
 import authRoutes from "./auth.routes";
+import mealRoutes from "./meals.routes";
 import logger from "../../lib/logger";
 
 const routes = (app: Application): void => {
@@ -20,6 +21,8 @@ const routes = (app: Application): void => {
 
   // Users
   app.use("/api/v1/users", userRoutes(express.Router()));
+
+  app.use("/api/v1/meals", mealRoutes(express.Router()));
 
   // Custom 404 handler
   app.use((_req: Request, res: Response): void => {
