@@ -24,4 +24,15 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { create };
+const index = async (req: Request, res: Response, next: NextFunction) => {
+  const { ingredient } = req.query;
+
+  try {
+    const meals = await Meal.find({ "ingredients.name": ingredient });
+    res.json(meals);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { create, index };
