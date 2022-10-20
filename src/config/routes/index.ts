@@ -1,5 +1,12 @@
-import express, { Application, Request, Response, NextFunction } from "express";
+import express, {
+  Application,
+  Request,
+  Response,
+  NextFunction,
+  Router,
+} from "express";
 import { auth, requiresAuth } from "express-openid-connect";
+import swaggerUi from "swagger-ui-express";
 
 import requestLogger from "../../middlware/requestLogger";
 import authConfig from "../auth.config";
@@ -9,43 +16,51 @@ import authRoutes from "./auth.routes";
 import mealRoutes from "./meals.routes";
 import logger from "../../lib/logger";
 
-const routes = (app: Application): void => {
-  // Login, logout, etc. with Auth0
-  app.use(auth(authConfig), requestLogger);
+import swaggerDoc from "../../swagger-output.json";
 
-  // Custom auth routes
-  app.use(authRoutes(express.Router()));
+const router = Router();
 
-  // Events
-  app.use("/api/v1/events", requiresAuth(), eventRoutes(express.Router()));
+interface StatusMap {
+  [key: string]: number;
+}
 
-  // Users
-  app.use("/api/v1/users", userRoutes(express.Router()));
+// API docs
+router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
-  app.use("/api/v1/meals", mealRoutes(express.Router()));
+// Login, logout, etc. with Auth0
+router.use(auth(authConfig), requestLogger);
 
-  // Custom 404 handler
-  app.use((_req: Request, res: Response): void => {
-    res.status(404).json({ error: "not found" });
-  });
+// Custom auth routes
+router.use(authRoutes(express.Router()));
 
-  // See http://expressjs.com/en/guide/error-handling.html
-  app.use(
-    (error: Error, req: Request, res: Response, _next: NextFunction): void => {
-      res.status(500);
+// Events
+router.use("/api/v1/events", requiresAuth(), eventRoutes(express.Router()));
 
-      logger().error(error.message);
+// Users
+router.use("/api/v1/users", userRoutes(express.Router()));
 
-      if (app.get("env") === "development") {
-        res.json({
-          message: error.message,
-          error: error.stack,
-        });
-      }
+// Meals
+router.use(mealRoutes);
 
-      res.json({ error: "Application error, please contact support." });
-    }
-  );
-};
+// Custom 404 handler
+// See https://expressjs.com/en/starter/faq.html
+router.use((_req: Request, res: Response): void => {
+  res.status(404).json({ error: "not found" });
+});
 
-export default routes;
+// See http://expressjs.com/en/guide/error-handling.html
+router.use(
+  (error: Error, req: Request, res: Response, _next: NextFunction): void => {
+    const statusMap: StatusMap = {
+      ValidationError: 400,
+    };
+
+    res.status(statusMap[error.name] || 500);
+
+    res.json({
+      error: error.message || "Application error, please contact support.",
+    });
+  }
+);
+
+export default router;

@@ -1,14 +1,12 @@
 import { Router } from "express";
 
 import jsonResponse from "../../middlware/jsonResponse";
-import { create } from "../../controllers/meal.controller";
+import { create } from "../../controllers/meals.controller";
 
-const userRoutes = (router: Router): Router => {
-  router.use(jsonResponse);
+const router = Router();
 
-  router.post("/", create);
+router.use(jsonResponse);
 
-  return router;
-};
+router.post("/api/v1/meals", create);
 
-export default userRoutes;
+export default router;
