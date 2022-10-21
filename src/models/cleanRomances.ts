@@ -1,27 +1,27 @@
 import { Schema, model } from "mongoose";
 
-export interface IIngredient {
+export interface IReviews {
   name: string;
   quantity: string;
 }
 
-export interface IMeal {
+export interface cleanRomance {
   name: string;
-  ingredients: IIngredient[];
+  reviews: IReviews[];
 }
 
-const ingredientSchema = new Schema<IIngredient>({
+const reviewsSchema = new Schema<IReviews>({
   name: { type: String, required: true },
   quantity: { type: String, required: true },
 });
 
-const mealSchema = new Schema<IMeal>({
+const cleanRomanceSchema = new Schema<IcleanRomance>({
   name: { type: String, required: true },
-  ingredients: [ingredientSchema],
+  reviews: [reviewsSchema],
 });
 
-const meal = model("Meal", mealSchema);
+const cleanRomanances = model("CR", cleanRomanceSchema);
 
-export default meal;
+export default cleanRomanances;
 
 // Query by value in array: https://kb.objectrocket.com/mongo-db/use-mongoose-to-find-in-an-array-of-objects-1206

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import Meal from "../models/meal";
+import CR from "../models/cleanRomances";
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
   /*
@@ -14,10 +14,10 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
     }
    */
 
-  const { name, ingredients } = req.body;
+  const { name, reviews } = req.body;
 
   try {
-    const response = await Meal.create({ name, ingredients });
+    const response = await CR.create({ name, reviews });
     res.json(response);
   } catch (error) {
     next(error);
@@ -25,11 +25,11 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const index = async (req: Request, res: Response, next: NextFunction) => {
-  const { ingredient } = req.query;
+  const { review } = req.query;
 
   try {
-    const meals = await Meal.find({ "ingredients.name": ingredient });
-    res.json(meals);
+    const cleanRomanances = await CR.find({ "review.name": review });
+    res.json(cleanRomanances);
   } catch (error) {
     next(error);
   }

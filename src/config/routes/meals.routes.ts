@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import jsonResponse from "../../middlware/jsonResponse";
-import { create, index } from "../../controllers/meals.controller";
+import { create, index } from "../../controllers/cleanRomance.controller";
 
 const router = Router();
 
