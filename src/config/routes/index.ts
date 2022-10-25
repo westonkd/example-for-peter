@@ -16,7 +16,7 @@ import authRoutes from "./auth.routes";
 import mealRoutes from "./meals.routes";
 // import logger from "../../lib/logger";
 
-import swaggerDoc from "../../swagger-output.js";
+import swaggerDoc from "../../../swagger-output.json";
 
 const router = Router();
 
