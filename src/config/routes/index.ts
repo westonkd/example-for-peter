@@ -14,7 +14,7 @@ import eventRoutes from "./event.routes";
 import userRoutes from "./user.routes";
 import authRoutes from "./auth.routes";
 import mealRoutes from "./meals.routes";
-// import logger from "../../lib/logger";
+import logger from "../../lib/logger";
 
 import swaggerDoc from "../../../swagger-output.json";
 

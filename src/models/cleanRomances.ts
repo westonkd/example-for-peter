@@ -5,7 +5,7 @@ export interface IReviews {
   quantity: string;
 }
 
-export interface cleanRomance {
+export interface IcleanRomance {
   name: string;
   reviews: IReviews[];
 }
