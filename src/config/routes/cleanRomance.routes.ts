@@ -7,7 +7,7 @@ const router = Router();
 
 router.use(jsonResponse);
 
-router.get("/api/v1/meals", index);
-router.post("/api/v1/meals", create);
+router.get("/api/v1/cleanRomances", index);
+router.post("/api/v1/cleanRomances", create);
 
 export default router;

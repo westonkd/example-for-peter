@@ -13,7 +13,7 @@ import authConfig from "../auth.config";
 import eventRoutes from "./event.routes";
 import userRoutes from "./user.routes";
 import authRoutes from "./auth.routes";
-import mealRoutes from "./meals.routes";
+import mealRoutes from "./cleanRomance.routes";
 import logger from "../../lib/logger";
 
 import swaggerDoc from "../../../swagger-output.json";
