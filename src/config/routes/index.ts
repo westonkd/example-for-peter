@@ -16,7 +16,7 @@ import authRoutes from "./auth.routes";
 import mealRoutes from "./cleanRomance.routes";
 import logger from "../../lib/logger";
 
-import swaggerDoc from "../../../swagger-output.json";
+// import swaggerDoc from "../../swagger-output.json";
 
 const router = Router();
 
@@ -25,7 +25,7 @@ interface StatusMap {
 }
 
 // API docs
-router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+// router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 // Login, logout, etc. with Auth0
 router.use(auth(authConfig), requestLogger);

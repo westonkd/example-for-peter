@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "watch:build": "tsc -w",
-    "watch:run": "nodemon --inspect ./src/index.ts",
-    "watch": "concurrently npm:watch:*"
+    "watch:run": "nodemon --inspect ./dist/index.js",
+    "watch": "concurrently npm:watch:*",
+    "generate-docs": "node ./scripts/swagger.js"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,8 @@
     "@types/swagger-ui-express": "^4.1.3",
     "@types/validator": "^13.7.9",
     "@types/winston": "^2.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
     "concurrently": "^7.5.0",
     "nodemon": "^2.0.20",
     "swagger-autogen": "^2.22.0",

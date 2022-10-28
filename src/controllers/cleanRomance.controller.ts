@@ -17,7 +17,8 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
   const { name, reviews } = req.body;
 
   try {
-    const response = await CR.create({ name, reviews });
+    const response = await CR.create({ 
+    name, reviews });
     res.json(response);
   } catch (error) {
     next(error);
