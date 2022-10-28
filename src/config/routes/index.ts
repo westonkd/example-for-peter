@@ -13,7 +13,8 @@ import authConfig from "../auth.config";
 import eventRoutes from "./event.routes";
 import userRoutes from "./user.routes";
 import authRoutes from "./auth.routes";
-import mealRoutes from "./cleanRomance.routes";
+import cleanRomanceBooksRoutes from "./cleanRomance.routes";
+import fantasyBooksRoutes from "./fairytale.routes";
 import logger from "../../lib/logger";
 
 // import swaggerDoc from "../../swagger-output.json";
@@ -39,8 +40,12 @@ router.use("/api/v1/events", requiresAuth(), eventRoutes(express.Router()));
 // Users
 router.use("/api/v1/users", userRoutes(express.Router()));
 
-// Meals
-router.use(mealRoutes);
+// Clean Romance Books
+router.use(cleanRomanceBooksRoutes);
+
+// Fairytales and Fantasy Books
+router.use(fantasyBooksRoutes);
+
 
 // Custom 404 handler
 // See https://expressjs.com/en/starter/faq.html

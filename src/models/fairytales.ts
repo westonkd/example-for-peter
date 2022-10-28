@@ -7,7 +7,7 @@ export interface IReviews {
   reviewLocation: string;
 }
 
-export interface IcleanRomance {
+export interface IFairytale {
   title: string;
   authorFirst: string;
   authorLast: string;
@@ -26,7 +26,7 @@ const reviewsSchema = new Schema<IReviews>({
   reviewLocation: { type: String, required: false },
 });
 
-const cleanRomanceSchema = new Schema<IcleanRomance>({
+const fairytaleSchema = new Schema<IFairytale>({
   title: { type: String, required: false },
   authorFirst: { type: String, required: false },
   authorLast: { type: String, required: false },
@@ -37,11 +37,11 @@ const cleanRomanceSchema = new Schema<IcleanRomance>({
   isbn: { type: String, required: false },
   reviews: [reviewsSchema],
 },
-{ collection: "Clean_Romances" }
+{ collection: "Fairytales_and_Fantasy" }
 );
 
-const cleanRomanances = model("CR", cleanRomanceSchema);
+const Fairytale = model("fairytale", fairytaleSchema);
 
-export default cleanRomanances;
+export default Fairytale;
 
 // Query by value in array: https://kb.objectrocket.com/mongo-db/use-mongoose-to-find-in-an-array-of-objects-1206
