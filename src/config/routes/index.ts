@@ -5,18 +5,11 @@ import express, {
   NextFunction,
   Router,
 } from "express";
-import { auth, requiresAuth } from "express-openid-connect";
 
 import requestLogger from "../../middlware/requestLogger";
-import authConfig from "../auth.config";
-import eventRoutes from "./event.routes";
-import userRoutes from "./user.routes";
-import authRoutes from "./auth.routes";
 import docsRoutes from "./docs.routes";
 import cleanRomanceBooksRoutes from "./cleanRomance.routes";
 import fantasyBooksRoutes from "./fairytale.routes";
-import logger from "../../lib/logger";
-
 
 const router = Router();
 
@@ -24,30 +17,16 @@ interface StatusMap {
   [key: string]: number;
 }
 
-// API docs
-// router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
-
-// Login, logout, etc. with Auth0
-router.use(auth(authConfig), requestLogger);
-
-// Custom auth routes
-router.use(authRoutes(express.Router()));
-
-// Events
-router.use("/api/v1/events", requiresAuth(), eventRoutes(express.Router()));
+router.use(requestLogger);
 
 // Docs
 router.use(docsRoutes);
-
-// Users
-router.use("/api/v1/users", userRoutes(express.Router()));
 
 // Clean Romance Books
 router.use(cleanRomanceBooksRoutes);
 
 // Fairytales and Fantasy Books
 router.use(fantasyBooksRoutes);
-
 
 // Custom 404 handler
 // See https://expressjs.com/en/starter/faq.html

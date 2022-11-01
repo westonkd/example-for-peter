@@ -1,0 +1,171 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Weston's Contacts API",
+    "description": "An open API for managing contacts",
+    "version": "1.0.0"
+  },
+  "host": "",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/api/v1/cleanRomances": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "review",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "cleanRomance",
+            "in": "body",
+            "description": "clean romance to create",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "To Sir, wiht Love"
+                },
+                "authorFirst": {
+                  "type": "string",
+                  "example": "Lauren"
+                },
+                "authorLast": {
+                  "type": "string",
+                  "example": "Layne"
+                },
+                "listPrice": {
+                  "type": "string",
+                  "example": "$12.99"
+                },
+                "img_url": {
+                  "type": "string",
+                  "example": "https://m.media-amazon.com/images/I/41oxMi5iWcL.jpg"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "A nice book!"
+                },
+                "publishedDate": {
+                  "type": "string",
+                  "example": "June 29, 2021"
+                },
+                "isbn": {
+                  "type": "string",
+                  "example": "9780451037497"
+                },
+                "reviews": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "stars": {
+                        "type": "string",
+                        "example": "1"
+                      },
+                      "content": {
+                        "type": "string",
+                        "example": "Review content"
+                      },
+                      "person": {
+                        "type": "string",
+                        "example": "Brother Dransfield"
+                      },
+                      "reviewLocation": {
+                        "type": "string",
+                        "example": "Idaho, USA"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/fairytale": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "review",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "meal",
+            "in": "body",
+            "description": "The meal to create",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "cookies"
+                },
+                "ingredients": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "Milk"
+                      },
+                      "quantity": {
+                        "type": "string",
+                        "example": "1 Cup"
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
