@@ -28,12 +28,6 @@ router.use(cleanRomanceBooksRoutes);
 // Fairytales and Fantasy Books
 router.use(fantasyBooksRoutes);
 
-// Custom 404 handler
-// See https://expressjs.com/en/starter/faq.html
-router.use((_req: Request, res: Response): void => {
-  res.status(404).json({ error: "not found" });
-});
-
 // See http://expressjs.com/en/guide/error-handling.html
 router.use(
   (error: Error, req: Request, res: Response, _next: NextFunction): void => {
