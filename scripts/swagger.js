@@ -5,12 +5,12 @@ const doc = {
     title: "Weston's Contacts API",
     description: "An open API for managing contacts",
   },
-  host: "",
+  host: "cse341node-books.onrender.com",
   schemes: ["http", "https"],
 };
 
-const outputFile = "../dist/swagger-output.json";
-const endpointsFiles = ["../dist/config/routes/cleanRomance.routes.js"];
+const outputFile = "./dist/swagger-output.json";
+const endpointsFiles = ["./dist/config/routes/cleanRomance.routes.js"];
 
 
 swaggerAutogen(outputFile, endpointsFiles, doc);

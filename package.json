@@ -7,7 +7,7 @@
     "watch:build": "tsc -w",
     "watch:run": "nodemon --inspect ./dist/index.js",
     "watch": "concurrently npm:watch:*",
-    "build:swagger": "node swagger.js"
+    "build:swagger": "node ./scripts/swagger.js"
   },
   "repository": {
     "type": "git",

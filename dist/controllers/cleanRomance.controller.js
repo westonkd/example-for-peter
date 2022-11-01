@@ -6,17 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.index = exports.create = void 0;
 const cleanRomances_1 = __importDefault(require("../models/cleanRomances"));
 const create = async (req, res, next) => {
-    /*
-      #swagger.parameters["meal"] = {
-          in: "body",
-          description: "The meal to create",
-          required: true,
-          schema: {
-            $name: "cookies",
-            ingredients: [{name: "Milk", quantity: "1 Cup"}]
-          }
-      }
-     */
     const { title, authorFirst, authorLast, listPrice, img_url, description, publishedDate, isbn, reviews } = req.body;
     try {
         const response = await cleanRomances_1.default.create({

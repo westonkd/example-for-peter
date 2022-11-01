@@ -8,7 +8,7 @@ dotenv_1.default.config();
 const authConfig = {
     authRequired: false,
     auth0Logout: true,
-    baseURL: process.env.BASE_URL || `https://cse-341-test-94u0.onrender.com`,
+    baseURL: process.env.BASE_URL || "",
     clientID: process.env.AUTH_ZERO_CLIENT_ID || "",
     issuerBaseURL: process.env.AUTH_ZERO_URL || "",
     secret: process.env.AUTH_ZERO_CLIENT_SECRET || "",
